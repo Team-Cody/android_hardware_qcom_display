@@ -69,11 +69,6 @@ LOCAL_SRC_FILES :=  ashmemalloc.cpp \
                     alloc_controller.cpp
 LOCAL_CFLAGS:= -DLOG_TAG=\"memalloc\" -DLOG_NDDEBUG=0
 
-ifeq ($(TARGET_USES_ION),true)
-    LOCAL_SRC_FILES += ionalloc.cpp
-    LOCAL_CFLAGS += -DUSE_ION
-endif
-
 LOCAL_MODULE := libmemalloc
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
