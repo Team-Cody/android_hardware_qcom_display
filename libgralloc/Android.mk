@@ -71,9 +71,7 @@ LOCAL_CFLAGS:= -DLOG_TAG=\"memalloc\" -DLOG_NDDEBUG=0
 
 LOCAL_SRC_FILES               :=  ionalloc.cpp alloc_controller.cpp
 
-ifeq ($(BOARD_USES_PMEM_ADSP),true)
-    LOCAL_CFLAGS              += -DUSE_PMEM_ADSP
-endif
+LOCAL_CFLAGS              += -DUSE_PMEM_ADSP
 
 LOCAL_MODULE := libmemalloc
 LOCAL_MODULE_TAGS := optional
