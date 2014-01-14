@@ -88,13 +88,13 @@ int PmemAdspAlloc::alloc_buffer(alloc_data& data)
         // Default page size does not need this ioctl
         err = alignPmem(fd, size, 8192);
         if (err < 0) {
-            ALOGE("alignPmem failed");
+            LOGE("alignPmem failed");
         }
     }
     void* base = mmap(0, size, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
     if (base == MAP_FAILED) {
         err = -errno;
-        ALOGE("%s: failed to map pmem fd: %s", PMEM_ADSP_DEVICE,
+        LOGE("%s: failed to map pmem fd: %s", PMEM_ADSP_DEVICE,
               strerror(errno));
         close(fd);
         return err;
@@ -105,7 +105,7 @@ int PmemAdspAlloc::alloc_buffer(alloc_data& data)
     data.base = base;
     data.offset = 0;
     data.fd = fd;
-    ALOGV("%s: Allocated buffer base:%p size:%d fd:%d",
+    LOGV("%s: Allocated buffer base:%p size:%d fd:%d",
           PMEM_ADSP_DEVICE, base, size, fd);
     return 0;
 

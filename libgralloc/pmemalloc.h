@@ -30,9 +30,6 @@
 #ifndef GRALLOC_PMEMALLOC_H
 #define GRALLOC_PMEMALLOC_H
 
-#ifdef USE_ION
-#include <linux/ion.h>
-#endif
 #include <utils/RefBase.h>
 #include "memalloc.h"
 
