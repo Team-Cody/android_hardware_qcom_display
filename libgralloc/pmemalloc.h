@@ -37,7 +37,7 @@
 #include "memalloc.h"
 
 namespace gralloc {
-    class PmemUserspaceAlloc : public IMemAlloc  {
+    class PmemAdspAlloc : public IMemAlloc  {
 
         public:
             class Allocator: public android::RefBase {
@@ -62,45 +62,6 @@ namespace gralloc {
 
             virtual int clean_buffer(void*base, size_t size,
                     int offset, int fd);
-
-            PmemUserspaceAlloc();
-
-            ~PmemUserspaceAlloc();
-
-        private:
-            int mMasterFd;
-            void* mMasterBase;
-            const char* mPmemDev;
-            android::sp<Allocator> mAllocator;
-            pthread_mutex_t mLock;
-            int init_pmem_area();
-            int init_pmem_area_locked();
-
-    };
-
-    class PmemKernelAlloc : public IMemAlloc  {
-
-        public:
-            virtual int alloc_buffer(alloc_data& data);
-
-            virtual int free_buffer(void *base, size_t size,
-                    int offset, int fd);
-
-            virtual int map_buffer(void **pBase, size_t size,
-                    int offset, int fd);
-
-            virtual int unmap_buffer(void *base, size_t size,
-                    int offset);
-
-            virtual int clean_buffer(void*base, size_t size,
-                    int offset, int fd);
-
-            PmemKernelAlloc(const char* device);
-
-            ~PmemKernelAlloc();
-        private:
-            const char* mPmemDev;
-
 
     };
 

@@ -36,10 +36,7 @@ namespace gralloc {
     struct alloc_data;
     class IMemAlloc;
     class IonAlloc;
-#ifdef USE_PMEM_ADSP
     class PmemAdspAlloc;
-    class PmemSmiAlloc;
-#endif
 
     class IAllocController : public android::RefBase {
 
@@ -73,10 +70,7 @@ namespace gralloc {
 
         private:
            android::sp<IonAlloc> mIonAlloc;
-#ifdef USE_PMEM_ADSP
            android::sp<PmemAdspAlloc> mPmemAlloc;
-           android::sp<PmemSmiAlloc> mPmemSmipoolAlloc;
-#endif
 };
 
 } //end namespace gralloc
